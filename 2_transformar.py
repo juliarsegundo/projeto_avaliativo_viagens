@@ -1,4 +1,5 @@
 from banco import conectar
+import banco
 
 # Esvaziar as tabelas SILVER (idempotencia)
 LIMPAR_SILVER = [
@@ -152,39 +153,31 @@ SET
 
 
 def main():
-
-    conexao = conectar()
-    cursor = conexao.cursor()
+    print("=== FASE 2: TRANSFORMAÇÃO + CAMADA SILVER ===")
 
     try:
-        # Limpa tabelas Silver
-        cursor.execute("DELETE FROM silver_pagamento")
-        cursor.execute("DELETE FROM silver_passagem")
-        cursor.execute("DELETE FROM silver_trecho")
-        cursor.execute("DELETE FROM silver_viagem")
+        conexao = banco.conectar()
 
-        # Executa cargas Silver
-        cursor.execute(SQL_VIAGEM)
-        cursor.execute(SQL_TRECHO)
-        cursor.execute(SQL_PASSAGEM)
-        cursor.execute(SQL_PAGAMENTO)
+        print("[1/3] Limpando tabelas silver...")
+        for comando in LIMPAR_SILVER:
+            banco.executar(conexao, comando)
 
-        # Calcula campos derivados
-        cursor.execute(SQL_CALC_VIAGEM)
+        print("[2/3] Copiando RAW -> SILVER...")
+        banco.executar(conexao, SQL_VIAGEM)
+        banco.executar(conexao, SQL_TRECHO)
+        banco.executar(conexao, SQL_PASSAGEM)
+        banco.executar(conexao, SQL_PAGAMENTO)
 
-        conexao.commit()
+        print("[3/3] Calculando as outras colunas...")
+        banco.executar(conexao, SQL_CALC_VIAGEM)
 
-        print("=== Transformação concluída com sucesso! ===")
+        conexao.close()
 
+        print("=== Camada SILVER concluída com sucesso! ===")
 
     except Exception as erro:
-        conexao.rollback()
-        print(f"Erro na transformação: {erro}")
-
-
-    finally:
-        cursor.close()
-        conexao.close()
+        print(f"[ERRO] {erro}")
+        raise
 
 
 if __name__ == "__main__":
