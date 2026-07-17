@@ -1,3 +1,4 @@
+DROP DATABASE transparencia;
 CREATE DATABASE transparencia
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_general_ci;
@@ -12,7 +13,7 @@ CREATE TABLE raw_viagem (
     numero_proposta_pcdp VARCHAR(99),
     situacao VARCHAR(99),
     viagem_urgente VARCHAR(99),
-    justificativa_urgencia_viagem VARCHAR(99),
+    justificativa_urgencia_viagem TEXT,
     codigo_orgao_superior VARCHAR(99),
     nome_orgao_superior VARCHAR(99),
     codigo_orgao_solicitante VARCHAR(99),
@@ -21,11 +22,11 @@ CREATE TABLE raw_viagem (
     nome VARCHAR(99),
     cargo VARCHAR(99),
     funcao VARCHAR(99),
-    descricao_funcao VARCHAR(99),
+    descricao_funcao TEXT,
     periodo_data_inicio VARCHAR(99),
     periodo_data_fim VARCHAR(99),
-    destinos VARCHAR(99),
-    motivo VARCHAR(99),
+    destinos VARCHAR(4000),
+    motivo VARCHAR(4000),
     valor_diarias VARCHAR(99),
     valor_passagens VARCHAR(99),
     valor_devolucao VARCHAR(99),
