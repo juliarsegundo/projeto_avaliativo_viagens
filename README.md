@@ -222,4 +222,7 @@ Este projeto permitiu compreender como dados brutos podem ser transformados em i
 
 Julia Segundo
 
+- LinkedIn: https://www.linkedin.com/in/juliarsegundo
+- GitHub: https://github.com/juliarsegundo
+
 Projeto desenvolvido como atividade avaliativa do curso de Análise de Dados com Python – SENAI.
