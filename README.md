@@ -2,7 +2,9 @@
 
 Projeto desenvolvido para a disciplina de Manipulação de Dados com Python e SQL (SENAI).
 
-O objetivo é aplicar o processo ETL utilizando a arquitetura Medallion (Raw → Silver → Gold), realizando a extração, transformação e análise de dados públicos de viagens governamentais.
+Este projeto tem como objetivo aplicar, na prática, o processo de ETL (Extração, Transformação e Carga) utilizando a arquitetura Medallion (Raw --> Silver --> Gold).
+A partir de dados públicos de viagens governamentais disponibilizados pelo Portal da Transparência, foram realizadas as etapas de extração, limpeza, padronização, modelagem e análise dos dados, transformando informações brutas em uma base estruturada e confiável para geração de indicadores e apoio à tomada de decisão.
+
 
 ---
 
@@ -106,6 +108,25 @@ Todas as perguntas foram respondidas utilizando consultas SQL, tabelas e gráfic
 
 ---
 
+## Aprendizados
+
+Durante o desenvolvimento deste projeto, foram aplicados conceitos fundamentais de Engenharia e Análise de Dados, permitindo consolidar o conteúdo abordado no curso Análise de Dados com Python (Módulo 1 - Manipulação de Dados com Python e SQL):
+
+- Arquitetura Medallion (camadas Raw, Silver e Gold);
+- Processo ETL (Extração, Transformação e Carga);
+- Integração entre Python e MySQL;
+- Modelagem relacional de bancos de dados;
+- Criação de chaves primárias (PK), chaves estrangeiras (FK) e constraints;
+- Limpeza, padronização e tipagem de dados utilizando SQL;
+- Tratamento de valores nulos, conversão de datas e valores monetários;
+- Consultas SQL com JOIN, GROUP BY e funções de agregação;
+- Construção de tabelas e views para a camada Gold;
+- Desenvolvimento de análises orientadas a perguntas de negócio;
+- Criação de visualizações de dados com Pandas e Matplotlib;
+- Organização de projetos seguindo boas práticas de modularização e PEP 8;
+- Versionamento e documentação do projeto usando Git e Github.
+---
+
 ## Como executar
 
 ### 1. Clone o projeto
@@ -188,6 +209,12 @@ Análise:
 ```bash
 3_analise.ipynb
 ```
+
+---
+
+## Conclusão
+
+Este projeto permitiu compreender como dados brutos podem ser transformados em informações úteis para o negócio por meio de uma arquitetura de dados bem estruturada, reforçando a importância da qualidade dos dados, da modelagem relacional e da análise baseada em evidências reais.
 
 ---
 
