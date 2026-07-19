@@ -1,0 +1,5 @@
+pandas
+matplotlib
+mysql-connector-python
+python-dotenv
+gdown

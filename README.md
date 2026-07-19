@@ -35,6 +35,7 @@ projeto_avaliativo_viagens/
 ├── 2_transformar.py
 ├── 3_analise.ipynb
 │
+├── requirements.txt
 ├── banco.py
 ├── config.py
 └── README.md
