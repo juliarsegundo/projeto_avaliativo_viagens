@@ -1,4 +1,4 @@
-DROP DATABASE transparencia;
+DROP DATABASE IF EXISTS transparencia;
 CREATE DATABASE transparencia
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_general_ci;
@@ -138,7 +138,9 @@ CREATE TABLE silver_trecho (
         FOREIGN KEY (id_viagem)
         REFERENCES silver_viagem(id_viagem),
     CONSTRAINT chk_numero_diarias
-        CHECK (numero_diarias >= 0)
+        CHECK (numero_diarias >= 0),
+    CONSTRAINT uk_trecho_sequencia
+        UNIQUE (id_viagem, sequencia_trecho)
 );
 
 CREATE TABLE silver_passagem (
